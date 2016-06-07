@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'kat_search'
+require 'factory_girl'
+
+include FactoryGirl::Syntax::Methods
+FactoryGirl.find_definitions
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+link = build :link
+search = build :search_failed
+
+# (If you use this, don't forget to add pry to your Gemfile!)
+require 'pry'
+Pry.start
