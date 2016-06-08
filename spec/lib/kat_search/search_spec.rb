@@ -15,13 +15,13 @@ describe KatSearch::Search do
     expect(subject.url).to eq(url)
   end
 
-  context '#results_found' do
+  context '#results_found?' do
     it 'is true if results are found' do
-      expect(subject.results_found).to be_truthy
+      expect(subject.results_found?).to be_truthy
     end
 
     it 'is false if no results are found' do
-      expect(search_failed.results_found).to be_falsy
+      expect(search_failed.results_found?).to be_falsy
     end
   end
 

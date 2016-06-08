@@ -15,7 +15,7 @@ module KatSearch
       @url = "https://kat.cr/usearch/#{ERB::Util.url_encode(search)}/"
     end
 
-    def results_found
+    def results_found?
       @results_found ||= page.at('p:contains("did not match any documents")').nil?
     rescue OpenURI::HTTPError
       @results_found = false
@@ -33,7 +33,7 @@ module KatSearch
 
     def generate_links
       links = []
-      return links unless results_found
+      return links unless results_found?
 
       crawled_links = page.css('.iaconbox')
       seeders = page.css('td.green')
