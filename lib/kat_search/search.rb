@@ -35,14 +35,15 @@ module KatSearch
       links = []
       return links unless results_found
 
-      crawled_links = page.css('.iaconbox > div')
+      crawled_links = page.css('.iaconbox')
       seeders = page.css('td.green')
       leechers = page.css('td.red')
 
       crawled_links[0..NUMBER_OF_LINKS - 1].each_with_index do |link, i|
-        params = YAML.load(link['data-sc-params'])
+        params = YAML.load(link.at('div')['data-sc-params'])
         params['seeders'] = seeders[i].text
         params['leechers'] = leechers[i].text
+        params['download_url'] = link.at('a[data-download]')['href']
         links << Link.new(params)
       end
 
