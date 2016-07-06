@@ -72,7 +72,7 @@ begin
 
   # Download torrent or print magnet link
   if options[:magnet]
-    cli.say torrent.magnet.green
+    cli.say torrent.magnet
   else
     torrent_file = torrent.download(options[:path])
     cli.say "#{torrent_file} downloaded successfully!".green
