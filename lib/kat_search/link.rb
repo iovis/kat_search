@@ -1,5 +1,4 @@
 require 'cgi'
-require 'open-uri'
 require 'httparty'
 
 module KatSearch
@@ -53,8 +52,7 @@ module KatSearch
 
     def extract_hash
       # Extract magnet properties to a Hash and then parse the sha1 info hash
-      magnet_params = CGI.parse(URI.parse(magnet).query)
-      raw_hash = magnet_params['xt'].first
+      raw_hash = magnet[/(xt.*?)&/, 1]  # extract the xt property
       raw_hash.split(':').last.downcase
     end
 
