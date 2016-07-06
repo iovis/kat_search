@@ -1,4 +1,5 @@
 require 'erb'
+require 'open-uri'
 require 'nokogiri'
 require 'yaml'
 
